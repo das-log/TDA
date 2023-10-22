@@ -2,6 +2,9 @@
 public class Edad {
     // creamos constructores para cada caso
 
+
+    //variables
+
     private int anio, mes, dia, edad;
     private int segundoAnio, segundoMes, SegundoDias;
 
