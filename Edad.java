@@ -55,4 +55,8 @@ public class Edad {
 //xd
     }
 
+    public void convertir(){
+        
+    }
+
 }
