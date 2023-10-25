@@ -51,7 +51,14 @@ public class Edad {
          * ┌( ͝° ͜ʖ͡°)=ε/̵͇̿̿/’̿’̿ ̿
          */
 
-//pruebaaaa
+         int edadAnio = anio - segundoAnio;
+
+         if(mes < segundoMes){
+            edadAnio = edadAnio - 1;
+         }
+         else if(mes == segundoMes && dia < SegundoDias){
+            edadAnio = edadAnio - 1;
     }
+}
 
 }
