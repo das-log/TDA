@@ -51,9 +51,7 @@ public class Edad {
          * ┌( ͝° ͜ʖ͡°)=ε/̵͇̿̿/’̿’̿ ̿
          */
 
-//prueba git branches
-//prueba git branches 2
-//test merge
+// prueba branch
     }
 
 }
