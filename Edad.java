@@ -5,8 +5,9 @@ public class Edad {
 
     //variables
 
-    private int anio, mes, dia, edad;
-    private int segundoAnio, segundoMes, SegundoDias;
+    private int anio, mes, dia; //variables locales recibidas del nacimiento
+    private int segundoAnio, segundoMes, segundoDias; //variables para fecha actual o fechas posterior 
+    private int edadAnios, edadMeses, edadDias; //para almacenar edad segun calculos
 
     // casos de fecha completa
 
@@ -36,18 +37,23 @@ public class Edad {
     // calcular fecha de nacimiento con edad proporcionada
 
     public Edad(byte edad) {
-        this.edad = edad;
+        this.edadAnios = edad;
     }
 
     // metodo para calcular edad por medio de dos fechas completas
-    public void calcularEdadCompleta(int segundoAnio, int segundoMes, int SegundoDias) {
+    public int calcularEdadCompleta(int segundoAnio, int segundoMes, int segundoDias) {
+        if(mes == segundoMes && dia == segundoDias ){ //si es su cumpleano 
+            edadAnios = segundoAnio - anio;
+            
 
+           
 
-        //fecha actual - fecha nacimiento, pero en logica hay una condicion de que si aun no llega la fecha de cumpleanos se resta un anio
-        // No quiero usar localDate porque hay que desarrollar la logica
+        } else if (mes == segundoMes && dia < segundoDias) { //si ya cumplio dentro del mes 
+            edadAnios = segundoAnio - anio;
+            edadMeses--;
+        }
 
-        //jdjjdjsdjdsdss
-
+        return edad;
     }
 
 }
