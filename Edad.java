@@ -2,12 +2,11 @@
 public class Edad {
     // creamos constructores para cada caso
 
+    // variables
 
-    //variables
-
-    private int anio, mes, dia; //variables locales recibidas del nacimiento
-    private int segundoAnio, segundoMes, segundoDias; //variables para fecha actual o fechas posterior 
-    private int edadAnios, edadMeses, edadDias; //para almacenar edad segun calculos
+    private int anio, mes, dia; // variables locales recibidas del nacimiento
+    private int segundoAnio, segundoMes, segundoDias; // variables para fecha actual o fechas posterior
+    private int edadAnios, edadMeses, edadDias; // para almacenar edad segun calculos
 
     // casos de fecha completa
 
@@ -39,21 +38,32 @@ public class Edad {
     public Edad(byte edad) {
         this.edadAnios = edad;
     }
-
+   // me acabo de dar cuenta que aqui hay que usar un objeto o un arreglo para
+            // retornar las variables
     // metodo para calcular edad por medio de dos fechas completas
     public int calcularEdadCompleta(int segundoAnio, int segundoMes, int segundoDias) {
-        if(mes == segundoMes && dia == segundoDias ){ //si es su cumpleano 
-            edadAnios = segundoAnio - anio;
-            
 
-           
-
-        } else if (mes == segundoMes && dia < segundoDias) { //si ya cumplio dentro del mes 
+        //**aqui donde el mes es el mismo de ambos
+        if (mes == segundoMes && dia == segundoDias) { // si es su cumpleanio
             edadAnios = segundoAnio - anio;
-            edadMeses--;
+
+            return edadAnios;
+         
+        } else if (mes == segundoMes && dia < segundoDias) { // si ya cumplio dentro del mes
+            edadAnios = segundoAnio - anio;
+            edadDias = segundoDias - dia;
+            return //debe retornar ambos
+
+        } else if (mes == segundoMes && dia > segundoDias) {// si esta por cumplir
+            edadAnios = segundoAnio - anio;
+
+            edadMeses = segundoMes - mes;
+
+            edadDias = 
         }
 
-        return edad;
+        //**si el mes es diferente
+
     }
 
 }
