@@ -14,6 +14,7 @@ public class Edad {
         this.anio = anioNac;
         this.mes = mesNac;
         this.dia = diaNac;
+
     }
 
     // caso que solo proporcionen anio
@@ -38,31 +39,65 @@ public class Edad {
     public Edad(byte edad) {
         this.edadAnios = edad;
     }
-   // me acabo de dar cuenta que aqui hay que usar un objeto o un arreglo para
-            // retornar las variables
+
+    /**me acabo de dar cuenta que aqui hay que usar un objeto o un arreglo para 
+    retornar las variables asi que hay que pasar de void a int arregloEdad[3] y retornar valores en el arrelgo usando 
+    arregloEdad[0] = edadAnios
+    arregloEdad[1] = edadMeses
+    arregloEdad[2] = edadDias
+    **/
+
     // metodo para calcular edad por medio de dos fechas completas
-    public int calcularEdadCompleta(int segundoAnio, int segundoMes, int segundoDias) {
+    public void calcularEdadCompleta(int segundoAnio, int segundoMes, int segundoDias) {
 
         //**aqui donde el mes es el mismo de ambos
         if (mes == segundoMes && dia == segundoDias) { // si es su cumpleanio
             edadAnios = segundoAnio - anio;
 
-            return edadAnios;
+            //retorna edadAnios;**
          
         } else if (mes == segundoMes && dia < segundoDias) { // si ya cumplio dentro del mes
             edadAnios = segundoAnio - anio;
             edadDias = segundoDias - dia;
-            return //debe retornar ambos
+            //debe retornar ambos**
 
         } else if (mes == segundoMes && dia > segundoDias) {// si esta por cumplir
             edadAnios = segundoAnio - anio;
 
             edadMeses = segundoMes - mes;
 
-            edadDias = 
+            edadDias = segundoDias - dia;
+
+            //debe retornar los 3**
+
+        }else {   //**  si el mes es diferente
+               
+            if (segundoMes < mes ){ //para evitar mes negativo
+                edadAnios = segundoAnio - anio - 1;
+                edadMeses = 12 - mes + segundoMes;
+                if(segundoDias < dia){              //para evitar dias negativos
+                    edadDias = dia - segundoDias;
+                    
+                } else {
+                    edadDias = segundoDias - dia;
+                    
+                }
+
+                //debe retornar los 3**
+
+            } else {
+                edadAnios = segundoAnio - anio;
+                edadMeses = segundoMes - mes;
+                edadDias = segundoDias - dia;
+
+                //debe retornar los 3**
+
+            }
+
+            
         }
 
-        //**si el mes es diferente
+       
 
     }
 
