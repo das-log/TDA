@@ -47,8 +47,19 @@ public class Edad {
     arregloEdad[2] = edadDias
     **/
 
+    public int[] calcularEdadCompleta(int segundoAnio, int segundoMes, int segundoDias) {
+
     // metodo para calcular edad por medio de dos fechas completas
     public void calcularEdadCompleta(int segundoAnio, int segundoMes, int segundoDias) {
+        int []arregloEdad =new int[3];
+
+
+        //comprobar si el mes y el dia de nacimiento  son identicos a la fecha posterior
+
+            // caso en el que el mes es diferente
+
+            // almacenar los valores de la edad en el arreglo
+        }
 
         //**aqui donde el mes es el mismo de ambos
         if (mes == segundoMes && dia == segundoDias) { // si es su cumpleanio
