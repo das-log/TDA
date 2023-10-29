@@ -67,4 +67,26 @@ public class Edad {
 
         return arregloEdad;
     }
+
+     public int[] calcularEdadConMesDias(int segundoMes, int segundoDias) {
+
+        // Ajuste si el día de nacimiento es mayor que el día actual
+        if (segundoDias < dia) {
+            segundoMes--;
+            segundoDias += 30; // Suponemos un mes de 30 días
+        }
+
+        // Ajuste si el mes de nacimiento es mayor que el mes actual
+        if (segundoMes < mes) {
+            segundoMes += 12;
+        }
+
+        arregloEdad[0] = 0;
+        arregloEdad[1] = segundoMes - mes;
+        arregloEdad[2] = segundoDias - dia;
+        
+
+System.out.println("mes: "+arregloEdad[1] + "dias: "+arregloEdad[2]);
+        return arregloEdad;
+    }
 }
