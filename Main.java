@@ -81,6 +81,12 @@ public class Main {
                     break;
                 case 3:
                     do {
+                        anioNac = 0;
+                        mesNac = 0; // Inicializa las variables antes del bucle
+                        diaNac = 0;
+                        segundoAnio = 0;
+                        segundoMes = 0;
+                        segundoDias = 0;
                         System.out.println("Ingrese el mes de nacimiento:");
                         mesNac = scanner.nextInt();
                         System.out.println("Ingrese el dia de nacimiento:");
@@ -91,14 +97,16 @@ public class Main {
                         System.out.println("Ingrese el dia de segunda fecha:");
                         segundoDias = scanner.nextInt();
 
-                        if ((mesNac < 1 || mesNac > 12 || diaNac < 1 || diaNac > 30) || (segundoMes < 1 || segundoMes > 12 || segundoDias < 1 || segundoDias > 30)) {
+                        if ((mesNac < 1 || mesNac > 12 || diaNac < 1 || diaNac > 30)
+                                || (segundoMes < 1 || segundoMes > 12 || segundoDias < 1 || segundoDias > 30)) {
                             System.out.println("Valores fuera de rango");
                         }
 
-                    } while ((mesNac < 1 || mesNac > 12 || diaNac < 1 || diaNac > 30) || (segundoMes < 1 || segundoMes > 12 || segundoDias < 1 || segundoDias > 30));
+                    } while ((mesNac < 1 || mesNac > 12 || diaNac < 1 || diaNac > 30)
+                            || (segundoMes < 1 || segundoMes > 12 || segundoDias < 1 || segundoDias > 30));
 
                     edad = new Edad(mesNac, diaNac);
-                    edad.calcularEdadConMesDias(segundoMes,segundoDias);
+                    edad.calcularEdadConMesDias(segundoMes, segundoDias);
 
                     break;
                 case 4:
