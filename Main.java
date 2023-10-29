@@ -25,15 +25,17 @@ public class Main {
          * en caso de que se ingrese una opcion default (No valida) en el switch,
          * se vuelva a ejecutar.
          */
-        do {
 
-            byte opcion = scanner.nextByte(); // Objeto tipo Scanner para ingresar opcion en switch
+        byte opcion = scanner.nextByte(); // Objeto tipo Scanner para ingresar opcion en switch
+        int segundaFecha = scanner.nextInt(); // Objeto tipo Scanner para ingresar segunda fecha
+        do {
 
             /* Variables que se usan para almacenar valores leidos por el escanner. */
             int anioNac; // representa el anio de nacimiento
             int mesNac; // represennta el mes de nacimiento
             int diaNac; // representa el dia de nacimiento
             int edadEnAnios; // representa la edad en anios si se ingresa como constructor
+            int segundoAnio, segundoMes, segundoDias; // representa datos de segunda fecha
 
             /*
              * Este switch tiene la funcion de pedir datos segun lo requerido por el
@@ -84,13 +86,20 @@ public class Main {
                         System.out.println("Ingrese el dia de nacimiento:");
                         diaNac = scanner.nextInt();
 
-                        if (mesNac < 1 || mesNac > 12 || diaNac < 1 || diaNac > 30) {
+                        System.out.println("Ingrese el mes de segunda fecha:");
+                        segundoMes = scanner.nextInt();
+                        System.out.println("Ingrese el dia de segunda fecha:");
+                        segundoDias = scanner.nextInt();
+
+                        if ((mesNac < 1 || mesNac > 12 || diaNac < 1 || diaNac > 30) || (segundoMes < 1 || segundoMes > 12 || segundoDias < 1 || segundoDias > 30)) {
                             System.out.println("Valores fuera de rango");
                         }
 
-                    } while (mesNac < 1 || mesNac > 12 || diaNac < 1 || diaNac > 30);
+                    } while ((mesNac < 1 || mesNac > 12 || diaNac < 1 || diaNac > 30) || (segundoMes < 1 || segundoMes > 12 || segundoDias < 1 || segundoDias > 30));
 
                     edad = new Edad(mesNac, diaNac);
+                    edad.calcularEdadConMesDias(segundoMes,segundoDias);
+
                     break;
                 case 4:
                     do {
