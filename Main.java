@@ -3,40 +3,59 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        Edad edad = null;
 
-         /***AQUI HAY QUE MOVER ESTO AL CONSTRUCTOR PORQUE SI SE CREA EL OBJETO CON EL CONSTRUCTOR SOLO ANIO SOLO SE PEDIRIA ANIO, AQUI ESTAS PIDIENDO LOS 3 */
-        // Solicitar y obtener la fecha de nacimiento del usuario
-        System.out.print("Ingresa el año de nacimiento: ");
-        int anioNac = scanner.nextInt();
+        do {
 
-        System.out.print("Ingresa el mes de nacimiento: ");
-        int mesNac = scanner.nextInt();
+            int opcion = scanner.nextInt();
 
-        System.out.print("Ingresa el día de nacimiento: ");
-        int diaNac = scanner.nextInt();
-       /***HASTA AQUI */
+            int anioNac;
+            int mesNac;
+            int diaNac;
 
-       
-        // Crear una instancia de Edad con la fecha de nacimiento proporcionada
-        Edad edad = new Edad(anioNac, mesNac, diaNac);
+            System.out.println("Elija una opción:");
+            System.out.println("1. Crear edad con fecha completa");
+            System.out.println("2. Crear edad con solo año");
+            System.out.println("3. Crear edad con solo meses y días");
+            System.out.println("4. Crear edad con edad en años");
 
+            switch (opcion) {
+                case 1:
 
+                    System.out.println("Ingrese el año de nacimiento:");
+                    anioNac = scanner.nextInt();
+                    System.out.println("Ingrese el mes de nacimiento:");
+                    mesNac = scanner.nextInt();
+                    System.out.println("Ingrese el dia de nacimiento:");
+                    diaNac = scanner.nextInt();
 
-        // Solicitar y obtener la fecha posterior del usuario
-        System.out.print("Ingresa el año actual: ");
-        int segundoAnio = scanner.nextInt();
+                    if (mesNac < 1 || mesNac > 12 || diaNac < 1 || diaNac > 30) {
+                        throw new IllegalArgumentException("Valores fuera de rango: año debe estar entre 1 y 9999, mes entre 1 y 12, día entre 1 y 30.");
+                    }
 
-        System.out.print("Ingresa el mes actual: ");
-        int segundoMes = scanner.nextInt();
+                    edad = new Edad(anioNac, mesNac, diaNac);
+                    break;
+                case 2:
+                    System.out.println("Ingrese el año de nacimiento:");
+                    anioNac = scanner.nextInt();
+                    edad = new Edad(anioNac);
+                    break;
+                case 3:
+                    System.out.println("Ingrese el mes de nacimiento:");
+                    mesNac = scanner.nextInt();
+                    System.out.println("Ingrese el dia de nacimiento:");
+                    diaNac = scanner.nextInt();
+                    edad = new Edad(mesNac, diaNac);
+                    break;
+                case 4:
+                    System.out.println("Ingrese la edad en años:");
+                    byte edadEnAnios = scanner.nextByte();
+                    edad = new Edad(edadEnAnios);
+                    break;
+                default:
+                    System.out.println("Opción no válida.");
+            }
 
-        System.out.print("Ingresa el día actual: ");
-        int segundoDias = scanner.nextInt();
-
-        
-        // Calcular la edad completa con la fecha posterior ingresada
-        int[] edadCalculada = edad.calcularEdadCompleta(segundoAnio, segundoMes, segundoDias);
-
-        // Mostrar la edad calculada
-        System.out.println("Edad calculada: " + edadCalculada[0] + " años, " + edadCalculada[1] + " meses, " + edadCalculada[2] + " días");
+        } while (edad == null);
     }
 }
