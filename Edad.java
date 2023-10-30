@@ -16,7 +16,7 @@ public class Edad {
     private int[] arregloEdad = new int[3];
 
     /* USO DE CONSTRUCTORES */
-    
+     /*---------------------------------------------------------------------------------------------- */
     public Edad(int anioNac, int mesNac, int diaNac) { //  Constructor para el caso que proporcione: anio, mes y dia 
 
 
@@ -26,25 +26,29 @@ public class Edad {
         this.dia = diaNac;
 
     }
-
-    public Edad(int anioNac) {
+ /*---------------------------------------------------------------------------------------------- */
+    public Edad(int anioNac) {  // constructor para el caso que proporcione: anio nacimiento
         this.anio = anioNac;
         this.mes = 0;
         this.dia = 0;
     }
-
-    public Edad(int mesNac, int diaNac) {
+ /*---------------------------------------------------------------------------------------------- */
+    public Edad(int mesNac, int diaNac) { // en caso de que proporcione edad en anios
         this.anio = 0;
         this.mes = mesNac;
         this.dia = diaNac;
     }
-
+ /*---------------------------------------------------------------------------------------------- */
     int edadAnios; // variable para constructor que pide edad exacta para calcular fecha
 
     public Edad(byte edad) { //constructor donde proporciona edad para pedir nacimiento
         this.edadAnios = edad;
     }
-/*FUNCION PARA CALCULOS DE EDAD*/
+
+     /*---------------------------------------------------------------------------------------------- */
+/*FUNCIONES PARA CALCULOS DE EDAD*/
+
+
     public int[] calcularEdadCompleta(int segundoAnio, int segundoMes, int segundoDias) {
 
         // Ajuste si el día de nacimiento es mayor que el día actual
@@ -64,10 +68,11 @@ public class Edad {
         arregloEdad[2] = segundoDias - dia;
         
 
-
+System.out.println("anio: "+arregloEdad[0]+ " mes: "+arregloEdad[1] + " dias: "+arregloEdad[2]);
         return arregloEdad;
     }
-
+     /*---------------------------------------------------------------------------------------------- */
+/*Funcion para calcular edad solo con mes y dias */
      public int[] calcularEdadConMesDias(int segundoMes, int segundoDias) {
 
         // Ajuste si el día de nacimiento es mayor que el día actual
@@ -86,7 +91,8 @@ public class Edad {
         arregloEdad[2] = segundoDias - dia;
         
 
-System.out.println("mes: "+arregloEdad[1] + "dias: "+arregloEdad[2]);
+System.out.println("mes: "+arregloEdad[1] + " dias: "+arregloEdad[2]);
         return arregloEdad;
     }
+     /*---------------------------------------------------------------------------------------------- */
 }

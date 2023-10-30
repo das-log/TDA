@@ -37,7 +37,7 @@ public class Main {
              */
 
             switch (opcion) {
-                /*primer caso, con anio, mes y dia.*/
+                /* primer caso, con anio, mes y dia. */
                 case 1:
                     /*
                      * Hará una comprobación de datos dentro de un rango
@@ -50,12 +50,20 @@ public class Main {
                         System.out.println("Ingrese el día de nacimiento:");
                         diaNac = scanner.nextInt();
 
+                        System.out.println("Ingrese el anio de segunda fecha:");
+                        segundoAnio = scanner.nextInt();
+                        System.out.println("Ingrese el mes de segunda fecha:");
+                        segundoMes = scanner.nextInt();
+                        System.out.println("Ingrese el día de segunda fecha:");
+                        segundoDias = scanner.nextInt();
+
                         if (mesNac < 1 || mesNac > 12 || diaNac < 1 || diaNac > 30) {
                             System.out.println("Valores fuera de rango");
                         }
                     } while (mesNac < 1 || mesNac > 12 || diaNac < 1 || diaNac > 30);
 
                     edad = new Edad(anioNac, mesNac, diaNac);
+                    edad.calcularEdadCompleta(segundoAnio, segundoMes, segundoDias);
                     break;
                 case 2:
                     System.out.println("Ingrese el año de nacimiento:");
@@ -90,7 +98,7 @@ public class Main {
                         System.out.println("Ingrese la edad en años:");
                         edadEnAnios = scanner.nextByte();
                         if (edadEnAnios < 1 || edadEnAnios > 120) {
-                         System.out.println("Valores fuera de rango");
+                            System.out.println("Valores fuera de rango");
                         }
                     } while (edadEnAnios < 1 || edadEnAnios > 120);
 
