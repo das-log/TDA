@@ -66,12 +66,11 @@ public class Edad {
         arregloEdad[1] = segundoMes - mes;
         arregloEdad[2] = segundoDias - dia;
 
-        System.out.println("anio: " + arregloEdad[0] + " mes: " + arregloEdad[1] + " dias: " + arregloEdad[2]);
         return arregloEdad;
     }
 
     /*---------------------------------------------------------------------------------------------- */
-    /* Funcion para calcular edad solo con mes y dias */
+    /* Funcion para calcular edad solo con mes y dias >0 */
     public int[] calcularEdadConMesDias(int segundoMes, int segundoDias) {
 
         // Ajuste si el día de nacimiento es mayor que el día actual
@@ -89,13 +88,12 @@ public class Edad {
         arregloEdad[1] = segundoMes - mes;
         arregloEdad[2] = segundoDias - dia;
 
-        System.out.println("mes: " + arregloEdad[1] + " dias: " + arregloEdad[2]);
         return arregloEdad;
     }
 
     /*---------------------------------------------------------------------------------------------- */
     /* Funcion para calcular edad solo con anio de nacimiento */
-    public int[] calcularConAnio(int segundoAnio){
+    public int[] calcularConAnio(int segundoAnio) {
         arregloEdad[0] = segundoAnio - anio;
         arregloEdad[1] = 0;
         arregloEdad[2] = 0;
@@ -108,12 +106,24 @@ public class Edad {
      * Funcion para calcular fecha de nacimiento
      * teniendo edad
      */
-    public int[] calcularFechaNacimiento(int edad, int segundoAnio){
+    public int[] calcularFechaNacimiento(int edad, int segundoAnio) {
         int anioNacimiento = segundoAnio - edad;
 
         arregloEdad[0] = anioNacimiento;
 
-return arregloEdad;
+        return arregloEdad;
+    }
+
+    /*---------------------------------------------------------------------------------------------- */
+    // Función para convertir la edad completa en meses
+    public int convertirEdadEnMeses() {
+        return (arregloEdad[0] * 12) + arregloEdad[1];
+    }
+
+    // Función para convertir la edad completa en días (suponiendo un mes de 30
+    // días)
+    public int convertirEdadEnDias() {
+        return (arregloEdad[0] * 360) + (arregloEdad[1] * 30) + arregloEdad[2];
     }
 
 }

@@ -42,7 +42,7 @@ public class Main {
                 /* primer caso, con anio, mes y dia. */
                 case 1:
                     /*
-                     * Hará una comprobación de datos dentro de un rango
+                     * Hará una comprobación de datos dentro de un rango con do 
                      */
                     do {
                         System.out.println("Ingrese el año de nacimiento:");
@@ -76,7 +76,7 @@ public class Main {
                     edad = new Edad(anioNac);
                     break;
                     /*---------------------------------------------------------------------------------------------- */
-                    /* Tercer caso solo teniendo mes y dia de nacimiento >1 */
+                    /* Tercer caso solo teniendo mes y dia de nacimiento. Anio >1 */
                 case 3:
                     do {
                         System.out.println("Ingrese el mes de nacimiento:");
@@ -118,6 +118,8 @@ public class Main {
                     System.out.println("Opción no válida.");
             }
 
+
         } while (edad == null);
+        scanner.close();
     }
 }
