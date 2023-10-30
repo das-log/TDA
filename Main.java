@@ -20,6 +20,7 @@ public class Main {
             System.out.println("2. Crear edad con solo año");
             System.out.println("3. Crear edad con solo meses y días");
             System.out.println("4. Crear edad con edad en años");
+            
 
             byte opcion = scanner.nextByte(); // Objeto tipo Scanner para ingresar opción en switch
 
@@ -37,6 +38,7 @@ public class Main {
              */
 
             switch (opcion) {
+                /*---------------------------------------------------------------------------------------------- */
                 /* primer caso, con anio, mes y dia. */
                 case 1:
                     /*
@@ -65,11 +67,16 @@ public class Main {
                     edad = new Edad(anioNac, mesNac, diaNac);
                     edad.calcularEdadCompleta(segundoAnio, segundoMes, segundoDias);
                     break;
+                    /*---------------------------------------------------------------------------------------------- */
+                    /* calcular edad solo con anio */
                 case 2:
+                
                     System.out.println("Ingrese el año de nacimiento:");
                     anioNac = scanner.nextInt();
                     edad = new Edad(anioNac);
                     break;
+                    /*---------------------------------------------------------------------------------------------- */
+                    /* Tercer caso solo teniendo mes y dia de nacimiento >1 */
                 case 3:
                     do {
                         System.out.println("Ingrese el mes de nacimiento:");
@@ -93,6 +100,8 @@ public class Main {
                     edad.calcularEdadConMesDias(segundoMes, segundoDias);
 
                     break;
+                    /*---------------------------------------------------------------------------------------------- */
+                    /* calcular fecha de nacimiento solo con edad en anios */
                 case 4:
                     do {
                         System.out.println("Ingrese la edad en años:");
@@ -104,6 +113,7 @@ public class Main {
 
                     edad = new Edad(edadEnAnios);
                     break;
+                    /*---------------------------------------------------------------------------------------------- */
                 default:
                     System.out.println("Opción no válida.");
             }
