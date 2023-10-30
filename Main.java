@@ -33,10 +33,11 @@ public class Main {
             /*
              * Este switch tiene la función de pedir datos según lo requerido por el
              * usuario. Por lo tanto, el objeto de tipo Edad procesará datos según el
-             * constructor de cada caso
+             * constructor de cada caso.
              */
 
             switch (opcion) {
+                /*primer caso, con anio, mes y dia.*/
                 case 1:
                     /*
                      * Hará una comprobación de datos dentro de un rango
@@ -101,3 +102,4 @@ public class Main {
 
         } while (edad == null);
     }
+}
