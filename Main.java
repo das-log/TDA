@@ -2,6 +2,7 @@
 
 import java.util.Scanner; //importa el Scanner para leer datos.
 /**
+ * Programa de equipo
  * Esta clase es el main
  * Aqui se piden datos para calcular tiempo entre dos fechas de forma aproximada.
  */
