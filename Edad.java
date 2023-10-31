@@ -106,8 +106,8 @@ public class Edad {
      * Funcion para calcular fecha de nacimiento
      * teniendo edad
      */
-    public int[] calcularFechaNacimiento(int edad, int segundoAnio) {
-        int anioNacimiento = segundoAnio - edad;
+    public int[] calcularFechaNacimiento(int segundoAnio) {
+        int anioNacimiento = segundoAnio - edadAnios;
 
         arregloEdad[0] = anioNacimiento;
 
@@ -116,14 +116,24 @@ public class Edad {
 
     /*---------------------------------------------------------------------------------------------- */
     // Función para convertir la edad completa en meses
-    public int convertirEdadEnMeses() {
-        return (arregloEdad[0] * 12) + arregloEdad[1];
+    public void convertirEdadEnMeses() {
+        int cAnioMeses = arregloEdad[0];
+        int edadMesesConvertido = (cAnioMeses * 12) + mes;
+        System.out.println("Edad en meses: " + edadMesesConvertido);
     }
 
     // Función para convertir la edad completa en días (suponiendo un mes de 30
     // días)
-    public int convertirEdadEnDias() {
-        return (arregloEdad[0] * 360) + (arregloEdad[1] * 30) + arregloEdad[2];
+    public void convertirEdadEnDias() {
+        int cAnioDias = arregloEdad[0];
+        int cMesesDias = arregloEdad[1];
+        int cDias = arregloEdad[2];
+        int edadDiasCalculados = (cAnioDias * 360) + (cMesesDias * 30) + cDias;
+        System.out.println("Edad en dias: " + edadDiasCalculados);
+    }
+
+    public int[] getArregloEdad(){
+        return arregloEdad;
     }
 
 }
