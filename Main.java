@@ -1,18 +1,20 @@
 
-/*Esta clase es el main
+
+import java.util.Scanner; //importa el Scanner para leer datos.
+/**
+ * Esta clase es el main
  * Aqui se piden datos para calcular tiempo entre dos fechas de forma aproximada.
  */
-import java.util.Scanner; //importa el Scanner para leer datos.
-
 public class Main {
     public static void main(String[] args) {
-
-        Scanner scanner = new Scanner(System.in); // objeto scanner para ingresar datos posteriormente.
-        Edad edad = null; // objeto apartir de la clase Edad para realizar calculos.
+// objeto scanner para ingresar datos posteriormente.
+        Scanner scanner = new Scanner(System.in); 
+        // objeto apartir de la clase Edad para realizar calculos.
+        Edad edad = null; 
         int[] imprimeEdad;
 
         do {
-            /*
+            /**
              * Imprime opciones para ingresar. Cada opción representa distintos casos en un
              * switch.
              */
@@ -21,8 +23,8 @@ public class Main {
             System.out.println("2. Crear edad con solo año");
             System.out.println("3. Crear edad con solo meses y días");
             System.out.println("4. Crear edad con edad en años");
-
-            byte opcion = scanner.nextByte(); // Objeto tipo Scanner para ingresar opción en switch
+// Objeto tipo Scanner para ingresar opción en switch
+            byte opcion = scanner.nextByte(); 
 
             /* Variables que se usan para almacenar valores leídos por el escáner. */
             int anioNac; // representa el año de nacimiento
