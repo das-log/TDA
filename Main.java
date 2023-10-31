@@ -121,21 +121,18 @@ public class Main {
                 /* calcular fecha de nacimiento solo con edad en anios */
                 case 4:
                     do {
-                        System.out.println("Ingrese la edad en años:");
-                        edadEnAnios = scanner.nextByte();
-                        System.out.println("Ingrese la segunda fecha en años:");
-                        segundoAnio = scanner.nextByte();
-                        edad = new Edad(edadEnAnios);
-                        edad.calcularFechaNacimiento(segundoAnio);
+                        System.out.println("Ingrese la edad en años:"); // Solicita la edad al usuario.
+                        edadEnAnios = scanner.nextByte(); // Lee la entrada del usuario y la almacena en la variable edadEnAnios.
+                        System.out.println("Ingrese la segunda fecha en años:"); // Solicita la segunda fecha al usuario.
+                        segundoAnio = scanner.nextByte(); // Lee la entrada del usuario y la almacena en la variable segundoAnio.
+                        edad = new Edad(edadEnAnios); // Crea un objeto de la clase Edad con el valor de edadEnAnios.
+                        edad.calcularFechaNacimiento(segundoAnio); // Llama al método calcularFechaNacimiento con el valor de segundoAnio.
                         if (edadEnAnios < 1 || edadEnAnios > 120) {
-                            System.out.println("Valores fuera de rango");
+                            System.out.println("Valores fuera de rango"); // Si la edad está fuera del rango, muestra un mensaje de error.
                         }
-                    } while (edadEnAnios < 1 || edadEnAnios > 120);
-
-                    
-
-
+                    } while (edadEnAnios < 1 || edadEnAnios > 120); // Continúa el bucle mientras la edad esté fuera del rango.
                     break;
+
                 /*---------------------------------------------------------------------------------------------- */
                 default:
                     System.out.println("Opción no válida.");
