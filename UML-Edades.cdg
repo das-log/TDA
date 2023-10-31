@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Edad">
+  <ClassDiagramComponents>
+    <Class name="Edad" package="edad" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="anio" type="int" visibility="private"/>
+        <Field name="arregloEdad" type="int[]" visibility="private"/>
+        <Field name="edadAnios" type="int" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="anioNac"/>
+          <Argument type="int" name="mesNac"/>
+          <Argument type="int" name="diaNac"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="anioNac"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="mesNac"/>
+          <Argument type="int" name="diaNac"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="byte" name="edad"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="calcularEdadCompleta" returnType="int[]" visibility="public">
+          <Argument type="int" name="segundoAnio"/>
+          <Argument type="int" name="segundoMes"/>
+          <Argument type="int" name="segundoDias"/>
+        </Method>
+        <Method name="calcularEdadConMesDias" returnType="int[]" visibility="public">
+          <Argument type="int" name="segundoMes"/>
+          <Argument type="int" name="segundoDias"/>
+        </Method>
+        <Method name="calcularConAnio" returnType="int[]" visibility="public">
+          <Argument type="int" name="segundoAnio"/>
+        </Method>
+        <Method name="calcularFechaNacimiento" returnType="int[]" visibility="public">
+          <Argument type="int" name="segundoAnio"/>
+        </Method>
+        <Method name="convertirEdadEnMeses" returnType="void" visibility="public"/>
+        <Method name="convertirEdadEnDias" returnType="void" visibility="public"/>
+        <Method name="getArregloEdad" returnType="int[]" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Main" package="edad" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>
