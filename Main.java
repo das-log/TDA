@@ -9,6 +9,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in); // objeto scanner para ingresar datos posteriormente.
         Edad edad = null; // objeto apartir de la clase Edad para realizar calculos.
+        int[] imprimeEdad;
 
         do {
             /*
@@ -20,7 +21,6 @@ public class Main {
             System.out.println("2. Crear edad con solo año");
             System.out.println("3. Crear edad con solo meses y días");
             System.out.println("4. Crear edad con edad en años");
-            
 
             byte opcion = scanner.nextByte(); // Objeto tipo Scanner para ingresar opción en switch
 
@@ -42,7 +42,7 @@ public class Main {
                 /* primer caso, con anio, mes y dia. */
                 case 1:
                     /*
-                     * Hará una comprobación de datos dentro de un rango con do 
+                     * Hará una comprobación de datos dentro de un rango con do
                      */
                     do {
                         System.out.println("Ingrese el año de nacimiento:");
@@ -66,17 +66,28 @@ public class Main {
 
                     edad = new Edad(anioNac, mesNac, diaNac);
                     edad.calcularEdadCompleta(segundoAnio, segundoMes, segundoDias);
+                    imprimeEdad = edad.getArregloEdad();
+                    System.out.println(
+                            "Edad en anios " + imprimeEdad[0] + " meses: " + imprimeEdad[1] + " dias" + imprimeEdad[2]);
+                    edad.convertirEdadEnMeses();
+                    edad.convertirEdadEnDias();
+
                     break;
-                    /*---------------------------------------------------------------------------------------------- */
-                    /* calcular edad solo con anio */
+                /*---------------------------------------------------------------------------------------------- */
+                /* calcular edad solo con anio */
                 case 2:
-                
+
                     System.out.println("Ingrese el año de nacimiento:");
                     anioNac = scanner.nextInt();
                     edad = new Edad(anioNac);
+                    imprimeEdad = edad.getArregloEdad();
+                    System.out.println("Edad en anios " + imprimeEdad[0]);
+                    edad.convertirEdadEnMeses();
+                    edad.convertirEdadEnDias();
+
                     break;
-                    /*---------------------------------------------------------------------------------------------- */
-                    /* Tercer caso solo teniendo mes y dia de nacimiento. Anio >1 */
+                /*---------------------------------------------------------------------------------------------- */
+                /* Tercer caso solo teniendo mes y dia de nacimiento. Anio >1 */
                 case 3:
                     do {
                         System.out.println("Ingrese el mes de nacimiento:");
@@ -98,26 +109,34 @@ public class Main {
 
                     edad = new Edad(mesNac, diaNac);
                     edad.calcularEdadConMesDias(segundoMes, segundoDias);
+                    imprimeEdad = edad.getArregloEdad();
+                    System.out.println("Edad en meses " + imprimeEdad[1] + " dias: " + imprimeEdad[2]);
+                    edad.convertirEdadEnDias();
 
                     break;
-                    /*---------------------------------------------------------------------------------------------- */
-                    /* calcular fecha de nacimiento solo con edad en anios */
+                /*---------------------------------------------------------------------------------------------- */
+                /* calcular fecha de nacimiento solo con edad en anios */
                 case 4:
                     do {
                         System.out.println("Ingrese la edad en años:");
                         edadEnAnios = scanner.nextByte();
+                        System.out.println("Ingrese la segunda fecha en años:");
+                        segundoAnio = scanner.nextByte();
+                        edad = new Edad(edadEnAnios);
+                        edad.calcularFechaNacimiento(segundoAnio);
                         if (edadEnAnios < 1 || edadEnAnios > 120) {
                             System.out.println("Valores fuera de rango");
                         }
                     } while (edadEnAnios < 1 || edadEnAnios > 120);
 
-                    edad = new Edad(edadEnAnios);
+                    
+
+
                     break;
-                    /*---------------------------------------------------------------------------------------------- */
+                /*---------------------------------------------------------------------------------------------- */
                 default:
                     System.out.println("Opción no válida.");
             }
-
 
         } while (edad == null);
         scanner.close();
