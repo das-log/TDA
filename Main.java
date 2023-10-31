@@ -1,202 +1,146 @@
+
+
+import java.util.Scanner; //importa el Scanner para leer datos.
 /**
- * Esta clase contiene las funciones que requiere el main para hacer calculos
- * respecto a la edad
+ * Esta clase es el main
+ * Aqui se piden datos para calcular tiempo entre dos fechas de forma aproximada.
  */
-public class Edad {
-    /*
-     * *
-     * para almacenar edad por constructores
-     */
-    private int anio, mes, dia;
-    /*
-     * para almacenar edad segun calculos:
-     * private int edadMeses, edadDias;
-     * 
-     * variables para fecha actual o fechas posterior:
-     * int segundoAnio, segundoMes,
-     * segundoDias;
-     */
+public class Main {
+    public static void main(String[] args) {
+// objeto scanner para ingresar datos posteriormente.
+        Scanner scanner = new Scanner(System.in); 
+        // objeto apartir de la clase Edad para realizar calculos.
+        Edad edad = null; 
+        int[] imprimeEdad;
 
-    /**
-     * arreglo para retornar calculos
-     */
-    private int[] arregloEdad = new int[3];
+        do {
+            /**
+             * Imprime opciones para ingresar. Cada opción representa distintos casos en un
+             * switch.
+             */
+            System.out.println("Elija una opción:");
+            System.out.println("1. Crear edad con fecha completa");
+            System.out.println("2. Crear edad con solo año");
+            System.out.println("3. Crear edad con solo meses y días");
+            System.out.println("4. Crear edad con edad en años");
+// Objeto tipo Scanner para ingresar opción en switch
+            byte opcion = scanner.nextByte(); 
 
-    /* USO DE CONSTRUCTORES */
-    /*---------------------------------------------------------------------------------------------- */
-    /**
-     * Constructor para el caso que proporcione:
-     * 
-     * @param anioNac recibe anio de nacimiento
-     * @param mes     recibe mes de nacimiento
-     * @param dia     recibe dia de nacimient
-     */
-    public Edad(int anioNac, int mesNac, int diaNac) {
+            /* Variables que se usan para almacenar valores leídos por el escáner. */
+            int anioNac; // representa el año de nacimiento
+            int mesNac; // representa el mes de nacimiento
+            int diaNac; // representa el día de nacimiento
+            int edadEnAnios; // representa la edad en años si se ingresa como constructor
+            int segundoAnio, segundoMes, segundoDias; // representa datos de la segunda fecha
 
-        this.anio = anioNac;
-        this.mes = mesNac;
-        this.dia = diaNac;
+            /*
+             * Este switch tiene la función de pedir datos según lo requerido por el
+             * usuario. Por lo tanto, el objeto de tipo Edad procesará datos según el
+             * constructor de cada caso.
+             */
 
+            switch (opcion) {
+                /*---------------------------------------------------------------------------------------------- */
+                /* primer caso, con anio, mes y dia. */
+                case 1:
+                    /*
+                     * Hará una comprobación de datos dentro de un rango con do
+                     */
+                    do {
+                        System.out.println("Ingrese el año de nacimiento:");
+                        anioNac = scanner.nextInt();
+                        System.out.println("Ingrese el mes de nacimiento:");
+                        mesNac = scanner.nextInt();
+                        System.out.println("Ingrese el día de nacimiento:");
+                        diaNac = scanner.nextInt();
+
+                        System.out.println("Ingrese el anio de segunda fecha:");
+                        segundoAnio = scanner.nextInt();
+                        System.out.println("Ingrese el mes de segunda fecha:");
+                        segundoMes = scanner.nextInt();
+                        System.out.println("Ingrese el día de segunda fecha:");
+                        segundoDias = scanner.nextInt();
+
+                        if (mesNac < 1 || mesNac > 12 || diaNac < 1 || diaNac > 30) {
+                            System.out.println("Valores fuera de rango");
+                        }
+                    } while (mesNac < 1 || mesNac > 12 || diaNac < 1 || diaNac > 30);
+
+                    edad = new Edad(anioNac, mesNac, diaNac);
+                    edad.calcularEdadCompleta(segundoAnio, segundoMes, segundoDias);
+                    imprimeEdad = edad.getArregloEdad();
+                    System.out.println(
+                            "Edad en anios " + imprimeEdad[0] + " meses: " + imprimeEdad[1] + " dias" + imprimeEdad[2]);
+                    edad.convertirEdadEnMeses();
+                    edad.convertirEdadEnDias();
+
+                    break;
+                /*---------------------------------------------------------------------------------------------- */
+                /* calcular edad solo con anio */
+                case 2:
+
+                    System.out.println("Ingrese el año de nacimiento:");
+                    anioNac = scanner.nextInt();
+                    edad = new Edad(anioNac);
+                    imprimeEdad = edad.getArregloEdad();
+                    System.out.println("Edad en anios " + imprimeEdad[0]);
+                    edad.convertirEdadEnMeses();
+                    edad.convertirEdadEnDias();
+
+                    break;
+                /*---------------------------------------------------------------------------------------------- */
+                /* Tercer caso solo teniendo mes y dia de nacimiento. Anio >1 */
+                case 3:
+                    do {
+                        System.out.println("Ingrese el mes de nacimiento:");
+                        mesNac = scanner.nextInt();
+                        System.out.println("Ingrese el día de nacimiento:");
+                        diaNac = scanner.nextInt();
+
+                        System.out.println("Ingrese el mes de segunda fecha:");
+                        segundoMes = scanner.nextInt();
+                        System.out.println("Ingrese el día de segunda fecha:");
+                        segundoDias = scanner.nextInt();
+
+                        if ((mesNac < 1 || mesNac > 12 || diaNac < 1 || diaNac > 30)
+                                || (segundoMes < 1 || segundoMes > 12 || segundoDias < 1 || segundoDias > 30)) {
+                            System.out.println("Valores fuera de rango");
+                        }
+                    } while ((mesNac < 1 || mesNac > 12 || diaNac < 1 || diaNac > 30)
+                            || (segundoMes < 1 || segundoMes > 12 || segundoDias < 1 || segundoDias > 30));
+
+                    edad = new Edad(mesNac, diaNac);
+                    edad.calcularEdadConMesDias(segundoMes, segundoDias);
+                    imprimeEdad = edad.getArregloEdad();
+                    System.out.println("Edad en meses " + imprimeEdad[1] + " dias: " + imprimeEdad[2]);
+                    edad.convertirEdadEnDias();
+
+                    break;
+                /*---------------------------------------------------------------------------------------------- */
+                /* calcular fecha de nacimiento solo con edad en anios */
+                case 4:
+                    do {
+                        System.out.println("Ingrese la edad en años:");
+                        edadEnAnios = scanner.nextByte();
+                        System.out.println("Ingrese la segunda fecha en años:");
+                        segundoAnio = scanner.nextByte();
+                        edad = new Edad(edadEnAnios);
+                        edad.calcularFechaNacimiento(segundoAnio);
+                        if (edadEnAnios < 1 || edadEnAnios > 120) {
+                            System.out.println("Valores fuera de rango");
+                        }
+                    } while (edadEnAnios < 1 || edadEnAnios > 120);
+
+                    
+
+
+                    break;
+                /*---------------------------------------------------------------------------------------------- */
+                default:
+                    System.out.println("Opción no válida.");
+            }
+
+        } while (edad == null);
+        scanner.close();
     }
-
-    /*---------------------------------------------------------------------------------------------- */
-    /**
-     * constructor para el caso de calcular edad solo con anio de nacimiento
-     * 
-     * @param recibe anio de nacimiento
-     */
-    public Edad(int anioNac) {
-        this.anio = anioNac;
-        this.mes = 0;
-        this.dia = 0;
-    }
-
-    /*---------------------------------------------------------------------------------------------- */
-    /**
-     * 
-     * @param mesNac mes de nacimiento
-     * @param diaNac dia de nacimiento
-     */
-    public Edad(int mesNac, int diaNac) {
-        this.anio = 0;
-        this.mes = mesNac;
-        this.dia = diaNac;
-    }
-
-    /*---------------------------------------------------------------------------------------------- */
-    int edadAnios; // variable para constructor que pide edad exacta para calcular fecha
-
-    /**
-     * 
-     * @param edad edad en anios para calculos
-     */
-
-    public Edad(byte edad) { // constructor donde proporciona edad para pedir nacimiento
-        this.edadAnios = edad;
-    }
-
-    /*---------------------------------------------------------------------------------------------- */
-
-    /**
-     * Funcion para calculo de edad completaFuncion para calculo de edad completa
-     * 
-     * @param segundoAnio segundo anio proporcionado a comparar con el de nacimiento
-     * @param segundoMes  segundo mes proporcionado a comparar con el de nacimiento
-     * @param segundoDias segundo dia proporcionado a comparar con el de nacimiento
-     * @return retorna un arreglo con la edad calculada
-     */
-
-    public int[] calcularEdadCompleta(int segundoAnio, int segundoMes, int segundoDias) {
-
-        // Ajuste si el día de nacimiento es mayor que el día actual
-        if (segundoDias < dia) {
-            segundoMes--;
-            segundoDias += 30; // Suponemos un mes de 30 días
-        }
-
-        // Ajuste si el mes de nacimiento es mayor que el mes actual
-        if (segundoMes < mes) {
-            segundoAnio--;
-            segundoMes += 12;
-        }
-
-        arregloEdad[0] = segundoAnio - anio;
-        arregloEdad[1] = segundoMes - mes;
-        arregloEdad[2] = segundoDias - dia;
-
-        return arregloEdad;
-    }
-
-    /*---------------------------------------------------------------------------------------------- */
-
-    /**
-     * Funcion para calcular edad solo con mes y dias >0
-     * 
-     * @param segundoMes  segundo mes proporcionado a comparar con el de nacimiento
-     * @param segundoDias segundo dia proporcionado a comparar con el de nacimiento
-     * @return retorna un arreglo con la edad calculada
-     */
-    public int[] calcularEdadConMesDias(int segundoMes, int segundoDias) {
-
-        // Ajuste si el día de nacimiento es mayor que el día actual
-        if (segundoDias < dia) {
-            segundoMes--;
-            segundoDias += 30; // Suponemos un mes de 30 días
-        }
-
-        // Ajuste si el mes de nacimiento es mayor que el mes actual
-        if (segundoMes < mes) {
-            segundoMes += 12;
-        }
-
-        arregloEdad[0] = 0;
-        arregloEdad[1] = segundoMes - mes;
-        arregloEdad[2] = segundoDias - dia;
-
-        return arregloEdad;
-    }
-
-    /*---------------------------------------------------------------------------------------------- */
-    /**
-     * 
-     * @param segundoAnio segundo anio proporcionado a comparar con el de nacimiento
-     * @return retorna un arreglo con la edad calculada
-     */
-    /* Funcion para calcular edad solo con anio de nacimiento */
-    public int[] calcularConAnio(int segundoAnio) {
-        arregloEdad[0] = segundoAnio - anio;
-        arregloEdad[1] = 0;
-        arregloEdad[2] = 0;
-
-        return arregloEdad;
-    }
-
-    /*---------------------------------------------------------------------------------------------- */
-
-    /**
-     * Funcion para calcular fecha de nacimiento
-     * teniendo edad
-     * 
-     * @param segundoAnio segundo anio proporcionado a comparar con el de nacimiento
-     * @return retorna un arreglo con la edad calculada
-     */
-    public int[] calcularFechaNacimiento(int segundoAnio) {
-        int anioNacimiento = segundoAnio - edadAnios;
-
-        arregloEdad[0] = anioNacimiento;
-
-        return arregloEdad;
-    }
-
-    /*---------------------------------------------------------------------------------------------- */
-    /**
-     * Función para convertir la edad completa en meses
-     * 
-     */
-
-    public void convertirEdadEnMeses() {
-        int cAnioMeses = arregloEdad[0];
-        int edadMesesConvertido = (cAnioMeses * 12) + mes;
-        System.out.println("Edad en meses: " + edadMesesConvertido);
-    }
-
-    /**
-     * Función para convertir la edad completa en días (suponiendo un mes de 30
-     * días)
-     */
-    public void convertirEdadEnDias() {
-        int cAnioDias = arregloEdad[0];
-        int cMesesDias = arregloEdad[1];
-        int cDias = arregloEdad[2];
-        int edadDiasCalculados = (cAnioDias * 360) + (cMesesDias * 30) + cDias;
-        System.out.println("Edad en dias: " + edadDiasCalculados);
-    }
-/**
- * Metodo accesor para que el main pueda manejar los dastos proporcionados al hacerlos publicos 
- * @return retorna el arreglo con la edad calculada
- */
-    public int[] getArregloEdad() {
-        return arregloEdad;
-    }
-
 }
